@@ -1,0 +1,20 @@
+{
+  "contactos": [
+    {
+      "nombre": "Diego Felipe",
+      "apellido": "Muñoz Mosquera",
+      "edad": 22,
+      "telefono": "3145684303",
+      "correo": "diegofelipem99@gmail.com",
+      "id": 1
+    },
+    {
+      "nombre": "Natalia",
+      "apellido": "Salazar Mosquera",
+      "edad": 22,
+      "telefono": "3105675127",
+      "correo": "natalia99@gmail.com",
+      "id": 2
+    }
+  ]
+}
