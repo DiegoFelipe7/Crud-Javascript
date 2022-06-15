@@ -4,9 +4,10 @@ const d = document,
   $title = d.getElementById("titulo-contactos"),
   $template = d.getElementById("crud-template").content,
   $fragmento = d.createDocumentFragment();
-window.onload = async function get() {
+window.onload = async function getUsers() {
   try {
-    const consulta = await fetch("http://localhost:3000/contactos");
+    const consulta = fetch("http://localhost:3000/contactos");
+    console.log(consulta);
     const respuesta = await consulta.json();
     const resultado = respuesta;
     resultado.forEach((element) => {
@@ -119,4 +120,9 @@ d.addEventListener("click", (e) => {
         });
     }
   }
+  document.getElementById("buscar").addEventListener("click", async (e) => {
+    e.preventDefault();
+    const valor = document.getElementById("busqueda").value;
+    await getUsers(valor);
+  });
 });

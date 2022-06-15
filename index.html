@@ -96,7 +96,22 @@
         </div>
       </section>
       <section class="w-50">
-        <h3 class="fw-bold">Lista de contactos</h3>
+        <div class="row">
+          <div class="col-4">
+            <h3 class="fw-bold">Lista de contactos</h3>
+          </div>
+          <div class="col-4">
+            <input
+              class="form-control"
+              id="busqueda"
+              name="busqueda"
+              placeholder="Email"
+            />
+          </div>
+          <div class="col-4">
+            <button id="buscar" class="btn btn-dark w-75">Buscar</button>
+          </div>
+        </div>
         <hr class="p-2" />
         <div class="w-100 border shadow rounded">
           <table id="crud-table" class="table table-striped">
