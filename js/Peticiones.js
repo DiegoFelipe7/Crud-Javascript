@@ -4,6 +4,7 @@ const d = document,
   $title = d.getElementById("titulo-contactos"),
   $template = d.getElementById("crud-template").content,
   $fragmento = d.createDocumentFragment();
+//Funcion para cargar la table con los usuarios registrados
 window.onload = async function getUsers() {
   try {
     const consulta = await fetch("http://localhost:3000/contactos");
@@ -36,6 +37,7 @@ window.onload = async function getUsers() {
     console.log(error);
   }
 };
+//peticion ajax
 const ajax = (option) => {
   let { url, method, success, error, data } = option;
   const xhr = new XMLHttpRequest();
@@ -54,6 +56,8 @@ const ajax = (option) => {
   xhr.send(JSON.stringify(data));
 };
 
+//funcion para escuchar un evento click el cual realiza un registo o una actualizacion
+//dependiendo si se recibe un id
 d.addEventListener("submit", (e) => {
   if (e.target === $form) {
     e.preventDefault();
@@ -62,7 +66,10 @@ d.addEventListener("submit", (e) => {
         url: "http://localhost:3000/contactos",
         method: "POST",
         success: () => {
-          location.reload();
+          Swal.fire("Registro exitos!", "datos registrados!", "success");
+          setTimeout(() => {
+            location.reload();
+          }, 4000);
         },
         data: {
           nombre: e.target.nombre.value,
@@ -77,7 +84,10 @@ d.addEventListener("submit", (e) => {
         url: `http://localhost:3000/contactos/${e.target.id.value}`,
         method: "PUT",
         success: () => {
-          location.reload();
+          Swal.fire("Registro actualizado!", "datos actualizados!", "success");
+          setTimeout(() => {
+            location.reload();
+          }, 4000);
         },
         data: {
           nombre: e.target.nombre.value,
@@ -91,6 +101,7 @@ d.addEventListener("submit", (e) => {
   }
 });
 
+//al momento de realizar un click en el boton actualizar se carga el form con los datos del usuario
 d.addEventListener("click", (e) => {
   if (e.target.matches(".actualizar")) {
     $title.textContent = "Editar contacto";
@@ -112,7 +123,7 @@ d.addEventListener("click", (e) => {
         configuracion
       )
         .then((res) => {
-          res.json;
+          res.json();
         })
         .catch((err) => {
           console.log(err);
@@ -120,6 +131,7 @@ d.addEventListener("click", (e) => {
     }
   }
 });
+//funcion para buscar un registo en la tabla se realiza una peticion con el valora a buscar
 document.getElementById("buscar").addEventListener("click", async (e) => {
   e.preventDefault();
   const value = document.getElementById("busqueda").value;

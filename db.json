@@ -15,6 +15,22 @@
       "telefono": 3105675127,
       "correo": "natalia99@gmail.com",
       "id": 2
+    },
+    {
+      "nombre": "Juan Jose",
+      "apellido": "Portilla Mosquera",
+      "edad": "25",
+      "telefono": "3105675127",
+      "correo": "juan.portilla@gmail.com",
+      "id": 3
+    },
+    {
+      "nombre": "Janier Andres",
+      "apellido": "Mosquera",
+      "edad": "32",
+      "telefono": "310258614",
+      "correo": "janier@gmail.com",
+      "id": 4
     }
   ]
 }
