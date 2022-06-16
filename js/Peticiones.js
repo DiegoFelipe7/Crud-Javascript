@@ -6,8 +6,7 @@ const d = document,
   $fragmento = d.createDocumentFragment();
 window.onload = async function getUsers() {
   try {
-    const consulta = fetch("http://localhost:3000/contactos");
-    console.log(consulta);
+    const consulta = await fetch("http://localhost:3000/contactos");
     const respuesta = await consulta.json();
     const resultado = respuesta;
     resultado.forEach((element) => {
@@ -120,9 +119,32 @@ d.addEventListener("click", (e) => {
         });
     }
   }
-  document.getElementById("buscar").addEventListener("click", async (e) => {
-    e.preventDefault();
-    const valor = document.getElementById("busqueda").value;
-    await getUsers(valor);
-  });
+});
+document.getElementById("buscar").addEventListener("click", async (e) => {
+  e.preventDefault();
+  const value = document.getElementById("busqueda").value;
+  $table.querySelector("tbody").innerHTML = "";
+  const consulta = await fetch(
+    `http://localhost:3000/contactos?correo=${value.trim()}`
+  );
+  const respuesta = await consulta.json();
+  console.log(respuesta[0].id);
+  $template.querySelector(".id").textContent = respuesta[0].id;
+  $template.querySelector(".nombre").textContent = respuesta[0].nombre;
+  $template.querySelector(".apellido").textContent = respuesta[0].apellido;
+  $template.querySelector(".edad").textContent = respuesta[0].edad;
+  $template.querySelector(".telefono").textContent = respuesta[0].telefono;
+  $template.querySelector(".correo").textContent = respuesta[0].correo;
+  $template.getElementById("actualizar").dataset.id = respuesta[0].id;
+  $template.getElementById("actualizar").dataset.nombre = respuesta[0].nombre;
+  $template.getElementById("actualizar").dataset.apellido =
+    respuesta[0].apellido;
+  $template.getElementById("actualizar").dataset.edad = respuesta[0].edad;
+  $template.getElementById("actualizar").dataset.telefono =
+    respuesta[0].telefono;
+  $template.getElementById("actualizar").dataset.correo = respuesta[0].correo;
+  $template.getElementById("eliminar").dataset.id = respuesta[0].id;
+  let $clone = d.importNode($template, true);
+  $fragmento.appendChild($clone);
+  $table.querySelector("tbody").appendChild($fragmento);
 });
