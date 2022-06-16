@@ -9,3 +9,7 @@
 ### El usuario puede eliminar un contacto 
 
 ### El usuario puede filtrar un contacto por su correo electronico
+
+
+# Adjunto video con la explicacion del proyecto
+https://youtu.be/kafxZ9VN12g
